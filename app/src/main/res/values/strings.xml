@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">To-Do App</string>
+    <string name="splash_welcome">To-do App</string>
+    <string name="splash_welcome2">SK</string>
+
+    <string name="login_login">Login</string>
+    <string name="login_username">Enter your username</string>
+    <string name="login_password">Enter your password</string>
+    <string name="login_username_required">Sorry, can not be blank</string>
+    <string name="login_password_required">Sorry, can not be blank</string>
+    <string name="invalid_login">Invalid username or password</string>
+    <string name="login_sign">Login</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="confirm_exit">Confirm Exit</string>
+    <string name="quite_app">Do you really want to quite it?</string>
+    <string name="ok">Ok</string>
+    <string name="exit">Exit</string>
+    <string name="app_logout">Logout</string>
+
+    <string name="tab_text_1">Add</string>
+    <string name="tab_text_2">List</string>
+
+    <string name="enter_date">Enter Date</string>
+    <string name="enter_todo">Enter todo</string>
+    <string name="save_todo">Save todo</string>
+</resources>
