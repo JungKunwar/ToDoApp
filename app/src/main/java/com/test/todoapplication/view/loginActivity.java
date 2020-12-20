@@ -17,6 +17,8 @@ import com.test.todoapplication.R;
 public class loginActivity extends AppCompatActivity {
 
     EditText txtUsername, txtPassword;
+    Button btnLogin, btnCancel;
+    AlertDialog.Builder mAlertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
