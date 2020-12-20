@@ -35,6 +35,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //if logout button is clicked, show login activity
+        logout=findViewById(R.id.btn_logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                SharedPreferences preferences=getApplicationContext().getSharedPreferences("todo_app",0);
+                //opening editor of shared preferences before storing info
+                SharedPreferences.Editor editor=preferences.edit();
+
+                //putting key value
+                editor.putBoolean("authentication", true);
+                editor.clear();
+                editor.commit();
+                Intent i= new Intent(MainActivity.this, loginActivity.class);
+                startActivity(i);
+                finish();
+                Toast.makeText(MainActivity.this,"successfully logout", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
         fragments.clear();
