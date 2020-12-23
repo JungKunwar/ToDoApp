@@ -31,8 +31,18 @@ public class AddToDoFragment extends Fragment {
     private ToDoViewModel mViewModel;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
     private Calendar calendar;
+    private AppCompatEditText appCompatEditTextDate, appCompatEditTextTodo;
+    private AppCompatButton mButtonSave;
 
-
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_add_to_do, container, false);
+        appCompatEditTextDate = view.findViewById(R.id.et_date);
+        appCompatEditTextTodo = view.findViewById(R.id.et_todo);
+        mButtonSave = view.findViewById(R.id.btn_save);
+        return view;
+    }
 
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
