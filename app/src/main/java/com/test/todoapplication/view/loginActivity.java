@@ -80,6 +80,36 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
+        //if cancel button is clicked, app must be exit
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder adb=new AlertDialog.Builder(loginActivity.this);
+                adb.setTitle(getString(R.string.confirm_exit));
+                adb.setIcon(R.mipmap.ic_launcher);
+                adb.setMessage(getString(R.string.quite_app));
+                adb.setCancelable(false);
+                adb.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
+                adb.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(loginActivity.this, "you clicked on cancel", Toast.LENGTH_LONG).show();
+                    }
+                });
+                AlertDialog alertDialog=adb.create();
+                alertDialog.show();
+
+
+
+            }
+        });
+        //   mAlertDialog.show();
+
 
     }
 }
