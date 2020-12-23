@@ -90,5 +90,21 @@ public class AddToDoFragment extends Fragment {
         });
     }
 
+    private void showDatePicker() {
+        new DatePickerDialog(getActivity(), dateSetListener, calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+    }
 
+    private DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month);
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            mViewModel.enteredDate.setValue(simpleDateFormat.format(calendar.getTime()));
+            appCompatEditTextDate.setText(mViewModel.enteredDate.getValue());
+        }
+    };
 }
+
+
