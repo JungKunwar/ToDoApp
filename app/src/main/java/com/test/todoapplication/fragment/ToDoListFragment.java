@@ -30,6 +30,8 @@ public class ToDoListFragment extends Fragment {
     private ToDoViewModel mViewModel;
     private RecyclerView mRecyclerView;
     private TodoListAdapter mTodoListAdapter;
+    private ArrayList<TodoData> mTodoList;
+    private AppCompatTextView mTextViewEmpty;
 
 
     @Override
@@ -40,7 +42,31 @@ public class ToDoListFragment extends Fragment {
         mTextViewEmpty = view.findViewById(R.id.tv_empty);
         return view;
     }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mViewModel = ViewModelProviders.of(this).get(ToDoViewModel.class);
 
+        mTodoList = new ArrayList<>();
+        mTodoListAdapter = new TodoListAdapter(mTodoList, mViewModel);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),
+                RecyclerView.VERTICAL, false));
+        mRecyclerView.setAdapter(mTodoListAdapter);
+
+        LiveData<List<TodoData>> allTodo = mViewModel.getAllTodo();
+        allTodo.observe(this, new Observer<List<TodoData>>() {
+            @Override
+            public void onChanged(List<TodoData> todoData) {
+                mTodoList.clear();
+                mTodoList.addAll(todoData);
+                if (mTodoList.isEmpty()) {
+                    mTextViewEmpty.setVisibility(View.VISIBLE);
+                } else {
+                    mTextViewEmpty.setVisibility(View.GONE);
+                }
+                mTodoListAdapter.notifyDataSetChanged();
+            }
+        });
 
     }
 }
