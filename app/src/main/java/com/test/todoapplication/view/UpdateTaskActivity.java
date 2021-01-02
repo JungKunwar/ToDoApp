@@ -31,7 +31,9 @@ public class UpdateTaskActivity extends AppCompatActivity {
         mEditTextTodo = findViewById(R.id.et_edit_todo);
         mBtnEdit = findViewById(R.id.btn_edit_save);
 
-
+        mTodoData = getIntent().getParcelableExtra("todo");
+        mEditTextTodo.setText(mTodoData.getTodo());
+        mEditTextDate.setText(mTodoData.getDate());
 
         Toolbar toolbar = findViewById(R.id.toolbar_update);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
