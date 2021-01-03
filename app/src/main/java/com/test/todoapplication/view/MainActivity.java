@@ -56,15 +56,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         fragments.clear();
         fragments.add(new AddToDoFragment());
         fragments.add(new ToDoListFragment());
 
-
-
-
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this,
+                getSupportFragmentManager(),fragments);
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager.setAdapter(sectionsPagerAdapter);
+        TabLayout tabs = findViewById(R.id.tabs);
+        tabs.setupWithViewPager(viewPager);
 
     }
 

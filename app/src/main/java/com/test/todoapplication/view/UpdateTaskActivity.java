@@ -43,6 +43,27 @@ public class UpdateTaskActivity extends AppCompatActivity {
             }
         });
 
-
+        mBtnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String todo = mEditTextTodo.getText().toString().trim();
+                String date = mEditTextDate.getText().toString().trim();
+                if (todo.isEmpty() && date.isEmpty()) {
+                    Toast.makeText(UpdateTaskActivity.this, "Fields cannot be empty",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    //save to db
+                    TodoData todoData = new TodoData();
+                    todoData.setId(mTodoData.getId());
+                    todoData.setTodo(todo);
+                    todoData.setDate(date);
+                    todoData.setStatus(mTodoData.getStatus());
+                    mViewModel.insert(todoData);
+                    Toast.makeText(UpdateTaskActivity.this, "Edit todo successfully",
+                            Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+        });
     }
 }
